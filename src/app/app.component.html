@@ -1,3 +1,6 @@
-<kendo-chat>
-
+<kendo-chat
+  [user]="user"
+[messages]="messages()"
+  (sendMessage)="addMessage($event)"
+>
 </kendo-chat>
