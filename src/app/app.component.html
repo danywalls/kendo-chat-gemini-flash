@@ -1,6 +1,42 @@
 <kendo-chat
   [user]="user"
-[messages]="messages()"
+  [messages]="messages()"
   (sendMessage)="addMessage($event)"
 >
+  <ng-template kendoChatMessageBoxTemplate>
+    <kendo-textarea
+      (inputFocus)="onInputFocus()"
+      (inputBlur)="onInputBlur()"
+      placeholder="Enter a message..."
+      resizable="none"
+      [rows]="4"
+      (keydown)="onKeyDown($event)"
+      #messageBoxInput
+    >
+      <kendo-textarea-suffix class="custom-suffix">
+        <input
+          (change)="onFileSelect($event)"
+          #uploadInput
+          type="file"
+          style="display: none;"
+        />
+        <button
+          (click)="uploadInput.click()"
+          fillMode="flat"
+          kendoButton
+          [svgIcon]="imageIcon"
+        ></button>
+        <span class="k-flex-1"></span>
+
+        <button
+          kendoButton
+          (click)="sendMessage()"
+          fillMode="flat"
+          class="send-button"
+        >
+          Send
+        </button>
+      </kendo-textarea-suffix>
+    </kendo-textarea>
+  </ng-template>
 </kendo-chat>

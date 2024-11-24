@@ -1,16 +1,18 @@
 import {Component, signal} from '@angular/core';
 import {KENDO_CHAT, Message, SendMessageEvent, User} from '@progress/kendo-angular-conversational-ui';
+import {KENDO_TEXTAREA} from '@progress/kendo-angular-inputs';
+import {KENDO_BUTTONS} from '@progress/kendo-angular-buttons';
 
 @Component({
   selector: 'app-root',
-  imports: [KENDO_CHAT],
+  imports: [KENDO_CHAT, KENDO_TEXTAREA, KENDO_BUTTONS],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
 
 
-  user : User = {
+  user: User = {
     id: 2,
     name: 'John Doe',
   }
@@ -25,7 +27,23 @@ export class AppComponent {
     }
   ])
 
-  addMessage(message : SendMessageEvent) {
+  addMessage(message: SendMessageEvent) {
     this.messages.update((m => [...m, message.message]));
+  }
+
+  onInputFocus() {
+
+  }
+
+  onInputBlur() {
+
+  }
+
+  onKeyDown($event: KeyboardEvent) {
+
+  }
+
+  onFileSelect($event: Event) {
+
   }
 }
