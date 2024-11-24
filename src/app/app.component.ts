@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {KENDO_CHAT} from '@progress/kendo-angular-conversational-ui';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [KENDO_CHAT],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
