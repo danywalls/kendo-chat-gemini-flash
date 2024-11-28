@@ -1,42 +1,12 @@
 <kendo-chat
-  [user]="user"
-  [messages]="messages()"
-  (sendMessage)="addMessage($event)"
->
+  [user]="JOHN_DOE_USER"
+  [messages]="messages()">
+  <ng-template kendoChatMessageTemplate let-message>
+    <div [innerHTML]="message.text"></div>
+  </ng-template>
   <ng-template kendoChatMessageBoxTemplate>
-    <kendo-textarea
-      (inputFocus)="onInputFocus()"
-      (inputBlur)="onInputBlur()"
-      placeholder="Enter a message..."
-      resizable="none"
-      [rows]="4"
-      (keydown)="onKeyDown($event)"
-      #messageBoxInput
-    >
-      <kendo-textarea-suffix class="custom-suffix">
-        <input
-          (change)="onFileSelect($event)"
-          #uploadInput
-          type="file"
-          style="display: none;"
-        />
-        <button
-          (click)="uploadInput.click()"
-          fillMode="flat"
-          kendoButton
-          [svgIcon]="imageIcon"
-        ></button>
-        <span class="k-flex-1"></span>
-
-        <button
-          kendoButton
-          (click)="sendMessage()"
-          fillMode="flat"
-          class="send-button"
-        >
-          Send
-        </button>
-      </kendo-textarea-suffix>
-    </kendo-textarea>
+    <div class="k-text-center k-flex ">
+      <kendo-fileselect #images (valueChange)="uploadFile(images)"/>
+    </div>
   </ng-template>
 </kendo-chat>
